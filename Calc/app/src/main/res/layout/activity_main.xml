@@ -5,10 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.kerbe.calc.MainActivity">
+    tools:context="com.example.kerbe.calc.MainActivity"
+    android:weightSum="1">
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="82dp"
+        android:layout_weight="0.84">
 
         <TextView
             android:textSize="20dp"
@@ -178,6 +180,48 @@
             android:layout_height="150px"
             android:onClick="ondiv"
             android:text="/" />
+
+        <Button
+            android:id="@+id/bNpowA"
+            android:layout_width="150px"
+            android:layout_height="150px"
+            android:onClick="onNpowA"
+            android:text="n^a" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        >
+
+        <Button
+            android:id="@+id/bsin"
+            android:layout_width="150px"
+            android:layout_height="150px"
+            android:onClick="onSin"
+            android:text="sin" />
+
+        <Button
+            android:id="@+id/bCos"
+            android:layout_width="150px"
+            android:layout_height="150px"
+            android:onClick="onCos"
+            android:text="Cos" />
+
+        <Button
+            android:id="@+id/bTan"
+            android:layout_width="150px"
+            android:layout_height="150px"
+            android:onClick="onTan"
+            android:text="tan" />
+
+        <Button
+            android:id="@+id/bmp"
+            android:layout_width="150px"
+            android:layout_height="150px"
+            android:onClick="onmp"
+            android:text="+/-" />
 
         <Button
             android:id="@+id/beq"

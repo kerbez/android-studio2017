@@ -72,17 +72,11 @@ public class MainActivity extends AppCompatActivity {
         }
         else{
             //ch = "+"
-            if(ch == "+")
-                s1 = String.valueOf(Float.valueOf(s1) + Float.valueOf(s2));
-            else if(ch == "-")
-                s1 = String.valueOf(Float.valueOf(s1) - Float.valueOf(s2));
-            else if(ch == "*")
-                s1 = String.valueOf(Float.valueOf(s1) * Float.valueOf(s2));
-            else if(ch == "/")
-                s1 = String.valueOf(Float.valueOf(s1) / Float.valueOf(s2));
+            s1 = calcc(s1, ch, s2);
             s2 = "";
             et.setText(s1 + "+");
         }
+        bco.setEnabled(true);
     }
 
     public void onCE(View view) {
@@ -124,18 +118,12 @@ public class MainActivity extends AppCompatActivity {
         }
         else{
             //ch = "+"
-            if(ch == "+")
-                s1 = String.valueOf(Float.valueOf(s1) + Float.valueOf(s2));
-            else if(ch == "-")
-                s1 = String.valueOf(Float.valueOf(s1) - Float.valueOf(s2));
-            else if(ch == "*")
-                s1 = String.valueOf(Float.valueOf(s1) * Float.valueOf(s2));
-            else if(ch == "/")
-                s1 = String.valueOf(Float.valueOf(s1) / Float.valueOf(s2));
+            s1 = calcc(s1, ch, s2);
             s2 = "";
             ch = "-";
             et.setText(s1 + "-");
         }
+        bco.setEnabled(true);
     }
 
     public void onroot(View view) {
@@ -181,18 +169,12 @@ public class MainActivity extends AppCompatActivity {
         }
         else{
             //ch = "+"
-            if(ch == "+")
-                s1 = String.valueOf(Float.valueOf(s1) + Float.valueOf(s2));
-            else if(ch == "-")
-                s1 = String.valueOf(Float.valueOf(s1) - Float.valueOf(s2));
-            else if(ch == "*")
-                s1 = String.valueOf(Float.valueOf(s1) * Float.valueOf(s2));
-            else if(ch == "/")
-                s1 = String.valueOf(Float.valueOf(s1) / Float.valueOf(s2));
+            s1 = calcc(s1, ch, s2);
             s2 = "";
             ch = "*";
             et.setText(s1 + "*");
         }
+        bco.setEnabled(true);
     }
 
     public void onpower(View view) {
@@ -211,20 +193,23 @@ public class MainActivity extends AppCompatActivity {
         s1 = "";
         s2 = "";
         et.setText("");
+        bco.setEnabled(true);
     }
 
     public void on0(View view) {
-        et.setText(et.getText() + "0");
+        if((k == 0 && s1 != "0") || (k == 1 && s2 != "0"))
+        {et.setText(et.getText() + "0");
         if(k ==0){
             s1 += "0";
         }
-        else s2 += "0";
+        else s2 += "0";}
     }
 
     public void onco(View view) {
         et.setText(et.getText() + ".");
         if(k == 0) s1 += ".";
         else s2 += ".";
+        bco.setEnabled(false);
     }
 
     public void ondiv(View view) {
@@ -235,36 +220,90 @@ public class MainActivity extends AppCompatActivity {
         }
         else{
             //ch = "+"
-            if(ch == "+")
-                s1 = String.valueOf(Float.valueOf(s1) + Float.valueOf(s2));
-            else if(ch == "-")
-                s1 = String.valueOf(Float.valueOf(s1) - Float.valueOf(s2));
-            else if(ch == "*")
-                s1 = String.valueOf(Float.valueOf(s1) * Float.valueOf(s2));
-            else if(ch == "/")
-                s1 = String.valueOf(Float.valueOf(s1) / Float.valueOf(s2));
+            s1 = calcc(s1, ch, s2);
             s2 = "";
             ch = "/";
             et.setText(s1 + "/");
         }
+        bco.setEnabled(true);
     }
 
     public void oneq(View view) {
             //ch = "+"
             //System.out.println(s1 + " "  + ch +  " " + s2);
-            if(ch == "+"){
-               // et.setText(s1 + " ||"  + ch +  " ||" + s2);
-                s1 = String.valueOf(Float.valueOf(s1) + Float.valueOf(s2));}
-            else if(ch == "-"){
-                s1 = String.valueOf(Float.valueOf(s1) - Float.valueOf(s2));}
-            else if(ch == "*")
-                s1 = String.valueOf(Float.valueOf(s1) * Float.valueOf(s2));
-            else if(ch == "/")
-                s1 = String.valueOf(Float.valueOf(s1) / Float.valueOf(s2));
+            s1 = calcc(s1, ch, s2);
             s2 = "";
             ch = "";
             k = 0;
             et.setText(s1);
         }
+
+    public void onSin(View view) {
+        if(k == 1){
+            s2 = String.valueOf(Math.sin(Math.toRadians(Float.valueOf(s2))));
+            et.setText(s1 + ch + s2);
+        }else{
+        s1 = String.valueOf(Math.sin(Math.toRadians(Float.valueOf(s1))));
+        et.setText(s1);}
+    }
+
+    public void onCos(View view) {
+        if(k == 1){
+            s2 = String.valueOf(Math.cos(Math.toRadians(Float.valueOf(s2))));
+            et.setText(s1 + ch + s2);
+        }
+        else
+        {s1 = String.valueOf(Math.cos(Math.toRadians(Float.valueOf(s1))));
+        et.setText(s1);}
+    }
+
+    public void onTan(View view) {
+        if(k == 1){
+            s2 = String.valueOf(Math.tan(Math.toRadians(Float.valueOf(s2))));
+            et.setText(s1 + ch + s2);
+        }else{
+        s1 = String.valueOf(Math.tan(Math.toRadians(Float.valueOf(s1))));
+        et.setText(s1);}
+    }
+
+    public void onmp(View view) {
+        if(k == 1) {
+            s1 = calcc(s1, ch, s2);
+            s2 = "";
+            ch = "";
+        }
+        s1 = String.valueOf(0 - Float.valueOf(s1));
+        et.setText(s1);
+    }
+
+    public void onNpowA(View view) {
+
+        if(k == 0){
+            ch = "^";
+            et.setText(et.getText() + "^");
+            k = 1;
+        }
+        else{
+            //ch = "+"
+            s1 = calcc(s1, ch, s2);
+            s2 = "";
+            ch = "/";
+            et.setText(s1 + "/");
+        }
+    }
+    public String calcc(String s1, String ch,String s2){
+        if(ch == "+")
+            s1 = String.valueOf(Float.valueOf(s1) + Float.valueOf(s2));
+        else if(ch == "-")
+            s1 = String.valueOf(Float.valueOf(s1) - Float.valueOf(s2));
+        else if(ch == "*")
+            s1 = String.valueOf(Float.valueOf(s1) * Float.valueOf(s2));
+        else if(ch == "/")
+            s1 = String.valueOf(Float.valueOf(s1) / Float.valueOf(s2));
+        else if(ch =="^"){
+            s1 = String.valueOf(Math.pow(Float.valueOf(s1),Float.valueOf(s2)));
+        }
+        return s1;
+    }
 }
 
