@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ImageView
+        android:id="@+id/charImage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TableRow>
+            <TextView
+                android:id="@+id/position" />
+            <TextView
+                android:id="@+id/position_txt" />
+        </TableRow>
+        <TableRow>
+            <TextView
+                android:id="@+id/psevdo" />
+            <TextView
+                android:id="@+id/psevdo_txt" />
+        </TableRow>
+        <TableRow>
+            <TextView
+                android:id="@+id/height" />
+            <TextView
+                android:id="@+id/height_txt" />
+        </TableRow>
+        <TableRow>
+            <TextView
+                android:id="@+id/ves" />
+            <TextView
+                android:id="@+id/ves_txt" />
+        </TableRow>
+        <TableRow>
+            <TextView
+                android:id="@+id/eyes" />
+            <TextView
+                android:id="@+id/eyes_txt" />
+        </TableRow>
+        <TableRow>
+            <TextView
+                android:id="@+id/hairs" />
+            <TextView
+                android:id="@+id/hairs_txt" />
+        </TableRow>
+    </TableLayout>
+
+</LinearLayout>
